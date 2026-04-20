@@ -93,61 +93,26 @@ export default function PreferencesPage() {
           </div>
         </div>
 
-        {/* Cards you already have */}
-        <div className="mb-8">
+        {/* Cards you already have — Coming Soon */}
+        <div className="mb-8 cursor-not-allowed opacity-50">
           <div className="mb-2 flex items-center gap-2">
             <p className="text-sm font-semibold text-slate-800">Cards you already have</p>
-            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500">
-              Optional
+            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
+              Coming soon
             </span>
           </div>
           <p className="mb-3 text-xs text-slate-500">
             We&apos;ll exclude these from results and flag overlapping cards.
           </p>
 
-          {/* Selected chips */}
-          {existing_cards.length > 0 && (
-            <div className="mb-2 flex flex-wrap gap-2">
-              {existing_cards.map((name) => (
-                <span
-                  key={name}
-                  className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700"
-                >
-                  {name}
-                  <button
-                    onClick={() => removeExistingCard(name)}
-                    className="text-slate-400 hover:text-slate-700"
-                    aria-label={`Remove ${name}`}
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Search input */}
+          {/* Search input — disabled */}
           <div className="relative">
             <input
               type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              disabled
               placeholder="Type to search 50+ cards..."
-              className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
+              className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-sm text-slate-400 placeholder-slate-300 outline-none"
             />
-            {suggestions.length > 0 && (
-              <div className="absolute left-0 right-0 top-full z-10 mt-1 rounded-xl border border-slate-200 bg-white shadow-lg">
-                {suggestions.map((name) => (
-                  <button
-                    key={name}
-                    onClick={() => { addExistingCard(name); setSearch(''); }}
-                    className="block w-full px-4 py-2.5 text-left text-sm text-slate-700 hover:bg-slate-50"
-                  >
-                    {name}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 

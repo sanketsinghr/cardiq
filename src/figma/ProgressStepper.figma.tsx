@@ -1,23 +1,12 @@
 import figma from '@figma/code-connect';
 import { ProgressStepper } from '@/components/ui/ProgressStepper';
 
-/**
- * Figma Code Connect — ProgressStepper
- * Node ID: 40:322 (Step progress bar in Quiz Spending page)
- */
+// Component node: 74:39  (🧩 Components page → ProgressStepper)
+// currentStep: 'income' | 'spending' | 'preferences'
 figma.connect(
   ProgressStepper,
-  'https://www.figma.com/design/xLVVIUNNDNHMplYqBds9V3/CardIQ-%E2%80%94-Credit-Card-Recommendation-UI?node-id=40-322',
+  'https://www.figma.com/design/xLVVIUNNDNHMplYqBds9V3/CardIQ-%E2%80%94-Credit-Card-Recommendation-UI?node-id=74-39',
   {
-    props: {
-      currentStep: figma.enum('Current Step', {
-        Income:      'income',
-        Spending:    'spending',
-        Preferences: 'preferences',
-      }),
-    },
-    example: (props) => (
-      <ProgressStepper currentStep={props.currentStep} />
-    ),
+    example: () => <ProgressStepper currentStep="income" />,
   }
 );

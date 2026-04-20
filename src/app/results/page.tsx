@@ -31,16 +31,7 @@ export default function ResultsPage() {
       {/* Results nav */}
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
-          <Link
-            href="/quiz/preferences"
-            className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-900"
-          >
-            <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 12L6 8l4-4" />
-            </svg>
-            Retry
-          </Link>
-
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-blue-600">
               <span className="text-xs font-bold text-white">C</span>
@@ -48,17 +39,30 @@ export default function ResultsPage() {
             <span className="text-sm font-bold text-slate-900">CardIQ</span>
           </div>
 
-          <button className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50">
-            ↑ Share results
-          </button>
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/quiz/income"
+              className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-900"
+            >
+              <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5">
+                <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+              </svg>
+              Retry
+            </Link>
+            <button className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700">
+              ↑ Share results
+            </button>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10">
         {/* Context chips */}
         <div className="mb-4 flex flex-wrap items-center gap-2">
-          {[incomeLabel, spendLabel, prefLabel].map((tag) => (
-            <span key={tag} className="rounded-full bg-white border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600">
+          {[quiz.income ? incomeLabel : null, spendLabel, prefLabel].filter(Boolean).map((tag) => (
+            <span key={tag!} className="rounded-full bg-white border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600">
               {tag}
             </span>
           ))}

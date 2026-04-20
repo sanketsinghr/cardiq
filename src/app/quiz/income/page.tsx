@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useQuizStore } from '@/lib/store';
 import { ProgressStepper } from '@/components/ui/ProgressStepper';
@@ -23,14 +24,23 @@ export default function IncomePage() {
   }
 
   return (
-    <div className="w-full max-w-xl">
-      {/* Stepper */}
-      <div className="mb-8 flex justify-center">
+    <div className="w-full max-w-2xl">
+      {/* Stepper row with Back */}
+      <div className="relative mb-8 flex items-center justify-center">
+        <Link
+          href="/"
+          className="absolute left-0 flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-slate-900"
+        >
+          <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10 12L6 8l4-4" />
+          </svg>
+          Back
+        </Link>
         <ProgressStepper currentStep="income" />
       </div>
 
       {/* Card */}
-      <div className="rounded-2xl bg-white p-8 shadow-sm">
+      <div className="mx-auto max-w-xl rounded-2xl bg-white p-8 shadow-sm">
         <p className="mb-1 text-xs font-bold uppercase tracking-widest text-blue-600">
           Step 1 of 3 · Income
         </p>
